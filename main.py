@@ -5,19 +5,19 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
-# Retrieve the API key from the .env file
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# # Retrieve the API key from the .env file
 
-if not GROQ_API_KEY:
-    st.error("GROQ API key is not set. Please configure the .env file.")
-    st.stop()
+
+# if not GROQ_API_KEY:
+#     st.error("GROQ API key is not set. Please configure the .env file.")
+#     st.stop()
     
 # Set up the language model
 llm = ChatGroq(
     temperature=0,
-    groq_api_key=GROQ_API_KEY,
+    groq_api_key=st.secrets["GROQ"]["API_KEY"],
     model_name="llama-3.2-90b-vision-preview"
 )
 
